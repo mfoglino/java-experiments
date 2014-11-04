@@ -1,16 +1,61 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <configuration>
 
-  <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
-    <layout class="ch.qos.logback.classic.PatternLayout">
-      <Pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</Pattern>
-    </layout>
-  </appender>
-  
-  <logger name="com.base22" level="TRACE"/>
-  
+	<appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+		<layout class="ch.qos.logback.classic.PatternLayout">
+			<Pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n
+			</Pattern>
+		</layout>
+	</appender>
 
-  <root level="debug">
-    <appender-ref ref="STDOUT" />
-  </root>
+	<appender name="dejavuPrintsToMlChannelFileAppender"
+		class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<file>/tmp/logs/bs/bs_prints.tmp
+		</file>
+
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<fileNamePattern>/tmp/logs/bs/%d{"yyyyMMdd"}/%d{"'Y'yy.'M'MM.'D'dd.'h'HH.'m'mm"}.s00.000_${HOSTNAME}%i.txt
+			</fileNamePattern>
+			<timeBasedFileNamingAndTriggeringPolicy
+				class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+				<maxFileSize>4MB</maxFileSize>
+			</timeBasedFileNamingAndTriggeringPolicy>
+			<maxHistory>5</maxHistory>
+		</rollingPolicy>
+		<encoder>
+			<pattern>%msg%n</pattern>
+		</encoder>
+	</appender>
+
+
+	<appender name="dejavuPrintsToMlChannelFileAppender2"
+		class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<file>/tmp/logs/bs/bs_prints.tmp
+		</file>
+
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<fileNamePattern>/tmp/logs/bs/%d{"yyyyMMdd"}/%d{"'Y'yy.'M'MM.'D'dd.'h'HH.'min'mm"}.s00.000_${HOSTNAME}%i.txt
+			</fileNamePattern>
+			<timeBasedFileNamingAndTriggeringPolicy
+				class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+				<maxFileSize>4MB</maxFileSize>
+			</timeBasedFileNamingAndTriggeringPolicy>
+			<maxHistory>5</maxHistory>
+		</rollingPolicy>
+		<encoder>
+			<pattern>%msg%n</pattern>
+		</encoder>
+	</appender>
+
+	<logger name="com.base22" level="TRACE" />
+
+	<logger name="dejavuPrintsToMlChannel" level="INFO" additivity="false">
+		<appender-ref ref="dejavuPrintsToMlChannelFileAppender" />
+	</logger>
+
+
+
+	<root level="debug">
+		<appender-ref ref="dejavuPrintsToMlChannel" />
+	</root>
 </configuration>

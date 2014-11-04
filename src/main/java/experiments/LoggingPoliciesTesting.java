@@ -1,0 +1,26 @@
+package experiments;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+
+public class LoggingPoliciesTesting {
+
+	private static final String VALID_MESSAGE = "2014-09-11 13:05:43\tmclics-clickcounter-webserver-print.MLB-master-vir\t172.16.149.198\t204\t0.017\t204\t0.017\t172.16.38.55:80\t177.188.177.216, 172.16.112.120\t575\t527\tGET\thttp\t/mclics/prints/MLB/count?d=1345807520%7C722052520%7C1410455137699%7C2642\thttp://eletronicos.mercadolivre.com.br/amplificadores-potencias/_Desde_241\te-00001518\tprint1.mercadoclics.com\tMozilla/5.0 (Windows NT 6.2; rv:31.0) Gecko/20100101 Firefox/31.0\t\t\t\t\t_d2id=7d1e4b7c-2d60-4bde-8172-05d7e6eb7151\ttrue\t8d6b4b29-ac52-4fbb-b4ca-085b60721f6e\tdesktop\tfalse\ttru\t7d1e4b7c-2d60-4bde-8172-05d7e6eb7151\t\tOTHER\t\tsite=MLB;call-params=site%3DMLB%26search-url%3Dhttp%3A%2F%2Feletronicos.mercadolivre.com.br%2Famplificadores-potencias%2F_Desde_241%26mclics-padv%3D2%26lang%3Dpt_BR%26ip%3D177.188.177.216%26positions%3DQCT%2CSKY%2CBTM%2CTOP%26abt%3D0.8243892508306617%26category%3DMLB11544%26page%3DVQCATCORE%26session%3DL4hzukgn602%26q%3D%26visual-id%3DSTD%26voldemortkey%3D1345807520%7C722052520%7C1410455137699%7C2642%26fromNW%3Dtrue;print-id=Thread%3Ahttp-8080-exec-3159%7CNanosecs%3A2585486422077399%7CServer%3Ae-00003226;tms=1410455143140;page=PAGE_UNKNOWN;domains=%5B%7B%22name%22%3A%22VQCATCORE_TOP%22%2C%22ads%22%3A%5B%7B%22id%22%3A%2216146705%22%2C%22type%22%3A%22N%22%2C%22position%22%3A%221%22%2C%22strategy%22%3A%22BasicAlgo3C02W04FN50Q%3ANAV%22%2C%22score%22%3A%220.00038638%22%2C%22cpc%22%3A%220.31248597%22%2C%22site%22%3A%22MLB%22%2C%22categ%22%3A%220%22%2C%22cust%22%3A%2289369058%22%2C%22campaign%22%3A%22256264%22%7D%5D%7D%2C%7B%22name%22%3A%22VQCATCORE_PAD%22%2C%22ads%22%3A%5B%7B%22id%22%3A%2211784966%22%2C%22type%22%3A%22P%22%2C%22position%22%3A%221%22%2C%22strategy%22%3A%22BasicAlgo3C02W04FN50Q%3ANAV%22%2C%22score%22%3A%220.00138901%22%2C%22cpc%22%3A%220.60000000%22%2C%22site%22%3A%22MLB%22%2C%22categ%22%3A%220%22%2C%22cust%22%3A%2235441387%22%2C%22campaign%22%3A%2211116455%22%7D%5D%7D%2C%7B%22name%22%3A%22VQCATCORE_SKY%22%2C%22ads%22%3A%5B%7B%22id%22%3A%2211784966%22%2C%22type%22%3A%22N%22%2C%22position%22%3A%221%22%2C%22strategy%22%3A%22BasicAlgo3C02W04FN50Q%3ANAV%22%2C%22score%22%3A%220.00060370%22%2C%22cpc%22%3A%220.19387136%22%2C%22site%22%3A%22MLB%22%2C%22categ%22%3A%220%22%2C%22cust%22%3A%22476719%22%2C%22campaign%22%3A%22200772%22%7D%2C%7B%22id%22%3A%229726600%22%2C%22type%22%3A%22N%22%2C%22position%22%3A%222%22%2C%22strategy%22%3A%22BasicAlgo3C02W04FN50Q%3ANAV%22%2C%22score%22%3A%220.00040358%22%2C%22cpc%22%3A%220.28786790%22%2C%22site%22%3A%22MLB%22%2C%22categ%22%3A%220%22%2C%22cust%22%3A%2230546322%22%2C%22campaign%22%3A%22474162%22%7D%2C%7B%22id%22%3A%2217240390%22%2C%22type%22%3A%22N%22%2C%22position%22%3A%223%22%2C%22strategy%22%3A%22BasicAlgo3C02W04FN50Q%3ANAV%22%2C%22score%22%3A%220.00030573%22%2C%22cpc%22%3A%220.35824998%22%2C%22site%22%3A%22MLB%22%2C%22categ%22%3A%220%22%2C%22cust%22%3A%2213788019%22%2C%22campaign%22%3A%22114080%22%7D%2C%7B%22id%22%3A%229726600%22%2C%22type%22%3A%22N%22%2C%22position%22%3A%224%22%2C%22strategy%22%3A%22BasicAlgo3C02W04FN50Q%3ANAV%22%2C%22score%22%3A%220.00054765%22%2C%22cpc%22%3A%220.18491745%22%2C%22site%22%3A%22MLB%22%2C%22categ%22%3A%220%22%2C%22cust%22%3A%2235441387%22%2C%22campaign%22%3A%22117347%22%7D%5D%7D%2C%7B%22name%22%3A%22VQCATCORE_BTM%22%2C%22ads%22%3A%5B%7B%22id%22%3A%229726600%22%2C%22type%22%3A%22N%22%2C%22position%22%3A%221%22%2C%22strategy%22%3A%22BasicAlgo3C02W04FN50Q%3ANAV%22%2C%22score%22%3A%220.00016878%22%2C%22cpc%22%3A%220.55497482%22%2C%22site%22%3A%22MLB%22%2C%22categ%22%3A%220%22%2C%22cust%22%3A%2248909152%22%2C%22campaign%22%3A%22136563%22%7D%2C%7B%22id%22%3A%2220563672%22%2C%22type%22%3A%22N%22%2C%22position%22%3A%222%22%2C%22strategy%22%3A%22BasicAlgo3C02W04FN50Q%3ANAV%22%2C%22score%22%3A%220.00013193%22%2C%22cpc%22%3A%220.69925673%22%2C%22site%22%3A%22MLB%22%2C%22categ%22%3A%220%22%2C%22cust%22%3A%22129329913%22%2C%22campaign%22%3A%22799454%22%7D%2C%7B%22id%22%3A%2217240390%22%2C%22type%22%3A%22N%22%2C%22position%22%3A%223%22%2C%22strategy%22%3A%22BasicAlgo3C02W04FN50Q%3ANAV%22%2C%22score%22%3A%220.00032947%22%2C%22cpc%22%3A%220.26413938%22%2C%22site%22%3A%22MLB%22%2C%22categ%22%3A%220%22%2C%22cust%22%3A%2238400390%22%2C%22campaign%22%3A%22375254%22%7D%5D%7D%5D;user-agent=Mozilla%2F5.0+%28Windows+NT+6.2%3B+rv%3A31.0%29+Gecko%2F20100101+Firefox%2F31.0;referer=http%3A%2F%2Feletronicos.mercadolivre.com.br%2Famplificadores-potencias%2F_desde_241;cookies=_d2id%3D7d1e4b7c-2d60-4bde-8172-05d7e6eb7151;gtms=1410455137687;ip=177.188.177.216\t\t\tcity=Tabo??o Da Serra;country_code=BR;country_name=Brazil;latitude=-23.600006;longitude=-46.766693;isp=Vivo\tnginx_stream\tfalse\trender_engine=GECKO;group=FIREFOX;name=FIREFOX 3;type=BROWSER;version=31.0;os_name=WINDOWS 8;os_device=COMPUTER;os_group=WINDOWS";
+
+	private static final Logger logger = LoggerFactory.getLogger("dejavuPrintsToMlChannel");
+
+	public static void main(String[] args) throws InterruptedException {
+
+		int i = 1;
+		while (i<5000000) {
+			logger.info(VALID_MESSAGE);
+			
+			Thread.sleep(10);
+			
+			i++;
+		}
+		//System.out.println("Fin.");
+	}
+
+}
